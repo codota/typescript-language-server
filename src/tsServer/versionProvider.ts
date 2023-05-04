@@ -10,7 +10,6 @@
  */
 
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import path from 'node:path';
 import which from 'which';
 import { pkgUpSync } from 'pkg-up';
@@ -163,15 +162,8 @@ export class TypeScriptVersionProvider {
     }
 
     public bundledVersion(): TypeScriptVersion | null {
-        const require = createRequire(import.meta.url);
-        try {
-            const file = require.resolve('typescript');
-            const tsServerPath = path.join(path.dirname(file), 'tsserver.js');
-            const bundledVersion = new TypeScriptVersion(TypeScriptVersionSource.Bundled, tsServerPath, this.logger);
-            return bundledVersion;
-        } catch (e) {
-            // window.showMessage('Bundled typescript module not found', 'error');
-            return null;
-        }
+        const tsServerPath = path.join(__dirname, '../node_modules/typescript/lib/tsserver.js');
+        const bundledVersion = new TypeScriptVersion(TypeScriptVersionSource.Bundled, tsServerPath, this.logger);
+        return bundledVersion;
     }
 }

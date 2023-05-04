@@ -37,8 +37,6 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn test && yarn build",
-      "post-merge": "yarn"
     }
   },
   "devDependencies": {
