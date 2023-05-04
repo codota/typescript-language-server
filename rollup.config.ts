@@ -9,8 +9,8 @@ export default defineConfig({
     output: [
         {
             banner: '#!/usr/bin/env node',
-            file: 'lib/cli.mjs',
-            format: 'es',
+            file: 'lib/cli.cjs',
+            format: 'cjs',
             generatedCode: 'es2015',
             plugins: [
                 terser(),

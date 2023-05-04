@@ -29,7 +29,8 @@
     "watch": "rimraf lib && rollup --config rollup.config.ts --configPlugin typescript --watch",
     "size": "yarn build && yarn size-limit",
     "postversion": "git push --follow-tags",
-    "prepare": "cd test-data/jsx && yarn"
+    "prepare": "cd test-data/jsx && yarn",
+    "pkg": "yarn compile && pkg -c package.json lib/cli.cjs"
   },
   "eslintIgnore": [
     "!.eslintrc.cjs"
@@ -67,6 +68,7 @@
     "husky": "4.x",
     "jest": "^29.5.0",
     "p-debounce": "^4.0.0",
+    "pkg": "^5.8.1",
     "pkg-up": "^4.0.0",
     "rimraf": "^5.0.0",
     "rollup": "^3.20.2",
@@ -83,5 +85,10 @@
     "vscode-languageserver-textdocument": "1.0.8",
     "vscode-uri": "^3.0.7",
     "which": "^3.0.0"
+  },
+  "pkg": {
+    "assets": ["package.json", "node_modules/typescript/**"],
+    "outputPath": "dist",
+    "targets": [ "node18-linux-x64", "node18-macos-x64", "node18-win-x64" ]
   }
 }
