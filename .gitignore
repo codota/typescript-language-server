@@ -4,3 +4,5 @@
 /.rollup.cache/
 /lib/
 node_modules/
+.idea/
+*.iml
