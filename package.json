@@ -87,6 +87,6 @@
   "pkg": {
     "assets": ["package.json", "node_modules/typescript/**"],
     "outputPath": "dist",
-    "targets": [ "node18-linux-x64", "node18-macos-x64", "node18-win-x64" ]
+    "targets": [ "node18-linux-x64", "node18-macos-x64", "node18-macos-arm64", "node18-win-x64" ]
   }
 }
