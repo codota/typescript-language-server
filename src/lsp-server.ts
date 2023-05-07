@@ -305,18 +305,28 @@ export class LspServer {
             }
             this.logger.logIgnoringVerbosity(LogLevel.Warning, `Typescript specified through user setting ignored due to invalid path "${userSettingVersion.path}"`);
         }
+
+        // Bundled version
+        const bundledVersion = typescriptVersionProvider.bundledVersion();
+
         // Workspace version.
         if (this.workspaceRoot) {
             const workspaceVersion = typescriptVersionProvider.getWorkspaceVersion([this.workspaceRoot]);
             if (workspaceVersion) {
+                if (bundledVersion?.isValid) {
+                    if (workspaceVersion.version == null || bundledVersion.version?.gte(workspaceVersion.version)) {
+                        return bundledVersion;
+                    }  
+                }   
+                
                 return workspaceVersion;
             }
         }
-        // Bundled version
-        const bundledVersion = typescriptVersionProvider.bundledVersion();
+
         if (bundledVersion?.isValid) {
             return bundledVersion;
         }
+        
         return null;
     }
 
