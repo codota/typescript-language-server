@@ -80,6 +80,7 @@
     "typescript": "^5.0.4",
     "vscode-languageserver": "^8.1.0",
     "vscode-languageserver-protocol": "^3.17.3",
+
     "vscode-languageserver-textdocument": "1.0.8",
     "vscode-uri": "^3.0.7",
     "which": "^3.0.0"
@@ -87,6 +88,6 @@
   "pkg": {
     "assets": ["package.json", "node_modules/typescript/**"],
     "outputPath": "dist",
-    "targets": [ "node18-linux-x64", "node18-macos-x64", "node18-macos-arm64", "node18-win-x64" ]
+    "targets": [ "node18-linux-x64", "node18-linux-arm64", "node18-macos-x64", "node18-macos-arm64", "node18-win-x64", "node18-win-arm64" ]
   }
 }
